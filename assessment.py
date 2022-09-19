@@ -1,29 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import boto3
 import json
 
 
-# In[ ]:
-
-
 S3_BUCKET = "test_bucket"
-
-
-# In[ ]:
-
 
 #Create an s3 client
 s3 = boto3.client('s3')
 s3.create_bucket(Bucket=S3_BUCKET)
-
-
-# In[ ]:
-
 
 # Create a bucket policy
 bucket_policy = {
@@ -54,10 +37,6 @@ bucket_policy = json.dumps(bucket_policy)
 s3 = boto3.client('s3')
 s3.put_bucket_policy(Bucket=S3_BUCKET, Policy=bucket_policy)
 
-
-# In[ ]:
-
-
 # Set lifecycle policy to delete objects after 14 days
 response = s3.put_bucket_lifecycle_configuration(
     Bucket='bucket-sample',
@@ -72,13 +51,3 @@ response = s3.put_bucket_lifecycle_configuration(
         ],
     },
 )
-
-
-# 
-# 
-
-# In[ ]:
-
-
-
-
